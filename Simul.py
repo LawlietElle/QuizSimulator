@@ -1,6 +1,7 @@
 from tkinter import *
 import Quiz
 
+n_opzioni = 4 #modificare per quiz con più/meno di 4 opzioni 
 
 def Leggi_File():
     messaggio = False
@@ -14,7 +15,7 @@ def Leggi_File():
             for line in f[0]:
                 if line is not "\n":
                     Quiz.q.append(line)
-                    for i in range(4):
+                    for i in range(n_opzioni):
                         Quiz.options[j].append(
                             f[0].readline().replace("\n", ""))  #rimuovo \n finale di ogni riga delle opzioni
                     j += 1

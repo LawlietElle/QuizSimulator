@@ -4,7 +4,7 @@ a = []  # answers
 q = []  # questions
 options = [[]]
 results = dict()
-
+n_opzioni= 4  # modificare per quiz con più/meno di 4 opzioni
 
 class Quiz:
     def __init__(self, master):
@@ -47,7 +47,7 @@ class Quiz:
         self.ques['text'] = q[qn]
         for op in options[qn]:
             self.opts[b_val]['text'] = op
-            b_val = b_val + 1
+            b_val += 1
 
     def check_q(self, qn):
         if self.opt_selected.get() == a[qn]:
@@ -62,7 +62,7 @@ class Quiz:
     def back_btn(self):
         self.qn = self.qn - 1
         self.display_q(self.qn)
-        results[self.qn] = "sbagliata"
+        results[self.qn - 1] = "sbagliata"
         """
 	se si torna indietro la risposta può essere modificata, quindi è settata a sbagliata ed eventualmente fosse selezionata l'opzione giusta
 	il metodo di check la dà giusta

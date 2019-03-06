@@ -1,8 +1,6 @@
 from tkinter import *
 import Quiz
 
-n_opzioni = 4 #modificare per quiz con più/meno di 4 opzioni 
-
 def Leggi_File():
     messaggio = False
     if nome_file.get():
@@ -15,15 +13,17 @@ def Leggi_File():
             for line in f[0]:
                 if line is not "\n":
                     Quiz.q.append(line)
-                    for i in range(n_opzioni):
+                    for i in range(Quiz.n_opzioni):
                         Quiz.options[j].append(
-                            f[0].readline().replace("\n", ""))  #rimuovo \n finale di ogni riga delle opzioni
+                            f[0].readline().replace("\n", ""))  # rimuovo \n finale di ogni riga delle opzioni
                     j += 1
                     Quiz.options.append([])
-
+                    
+                    
             f[0].close()
             Quiz.options.remove([])
             window.destroy()
+
         except FileNotFoundError:
             ris = "File non trovato"
             messaggio = True
@@ -55,7 +55,6 @@ f = []  # Can't find a better way to modify a variable by reference
 
 if __name__ == '__main__':
     window.mainloop()
-
 
 
 """schermata delle domande"""
